@@ -14,6 +14,7 @@ func main() {
 	}
 	fmt.Println(s)
 	s = ""
+	sep = ""
 	for _, arg := range os.Args[0:] {
 		s += sep + arg
 		sep = " "
