@@ -8,7 +8,6 @@ import (
 
 func main() {
 	var index = 0
-
 	for i := 1; i < len(os.Args); i++ {
 		fmt.Println(index, os.Args[i])
 		index++
