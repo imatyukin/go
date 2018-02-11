@@ -13,6 +13,7 @@ func main() {
 		sep = " "
 	}
 	fmt.Println(s)
+
 	s = ""
 	sep = ""
 	for _, arg := range os.Args[0:] {
@@ -20,5 +21,6 @@ func main() {
 		sep = " "
 	}
 	fmt.Println(s)
+
 	fmt.Println(strings.Join(os.Args[0:], " "))
 }
