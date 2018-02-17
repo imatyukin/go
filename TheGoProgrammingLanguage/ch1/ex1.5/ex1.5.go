@@ -3,6 +3,11 @@
 // похожим на экран осциллографа. Чтобы создать веб-цвет #RRGGBB, воспользуйтесь инструкцией color.
 // RGBA{0xRR,0xGG,0xBB,0xff}, в которой каждая пара шестнадцатеричных цифр представляет яркость красного, зеленого и
 // синего компонентов пикселя.
+
+// Run with "web" command-line argument for web server.
+//!+main
+
+// Lissajous generates GIF animations of random Lissajous figures.
 package main
 
 import (
@@ -16,7 +21,7 @@ import (
 )
 
 //!-main
-// Packages not needed by version in book.
+
 import (
 	"log"
 	"net/http"
@@ -79,4 +84,3 @@ func lissajous(out io.Writer) {
 	}
 	gif.EncodeAll(out, &anim) // NOTE: ignoring encoding errors
 }
-
