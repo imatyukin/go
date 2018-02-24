@@ -12,7 +12,6 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"net/url"
 	"os"
 	"time"
 )
@@ -29,31 +28,27 @@ func main() {
 	fmt.Printf("%.2fs elapsed\n", time.Since(start).Seconds())
 }
 
-func fetch(uri string, ch chan<- string) {
+func fetch(url string, ch chan<- string) {
 	start := time.Now()
-	resp, err := http.Get(uri)
+	file, err := os.Create("a.out")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+	resp, err := http.Get(url)
 	if err != nil {
 		ch <- fmt.Sprint(err) // send to channel ch
 		return
 	}
 
-	f, err := os.Create(url.QueryEscape(uri))
-	if err != nil {
-		ch <- err.Error()
-	}
-	nbytes, err := io.Copy(f, resp.Body)
+	nbytes, err := io.Copy(file, resp.Body)
 	resp.Body.Close() // don't leak resources
-
-	if closeErr := f.Close(); err == nil { // example from chapter 5.8, gopl.io/ch5/fetch
-		err = closeErr
-	}
-
 	if err != nil {
-		ch <- fmt.Sprintf("while reading %s: %v", uri, err)
+		ch <- fmt.Sprintf("while reading %s: %v", url, err)
 		return
 	}
 	secs := time.Since(start).Seconds()
-	ch <- fmt.Sprintf("%.2fs  %7d  %s", secs, nbytes, uri)
+	ch <- fmt.Sprintf("%.2fs  %7d  %s", secs, nbytes, url)
 }
 
 //!-
