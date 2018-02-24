@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+go run ex1.11.go https://www.google.ru https://www.youtube.com https://www.facebook.com https://vk.com https://linkedin.com http://amazon.com https://twitter.com https://www.juniper.net https://www.cisco.com http://www.huawei.com https://networks.nokia.com
