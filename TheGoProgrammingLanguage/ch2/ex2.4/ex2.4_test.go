@@ -28,17 +28,10 @@ func BenchmarkPopCountByShifting(b *testing.B) {
 	}
 }
 
-func BenchmarkPopCountByClearing(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		PopCountByClearing(0x1234567890ABCDEF)
-	}
-}
-
 // goos: darwin
 // goarch: amd64
 // pkg: go/TheGoProgrammingLanguage/ch2/ex2.4
-// 2000000000	         0.47 ns/op
-// 50000000	        30.9 ns/op
-// 5000000	       386 ns/op
-// 50000000	        41.5 ns/op
+// 2000000000	         0.46 ns/op
+// 50000000	        30.5 ns/op
+// 5000000	       390 ns/op
 // PASS
