@@ -2,6 +2,7 @@
 // Напишите объявления const для КВ, MB и так далее до YB настолько компактно, насколько сможете.
 package main
 
+//!+
 import "fmt"
 
 const (
@@ -18,3 +19,5 @@ const (
 func main() {
 	fmt.Println(KB, MB, GB, TB, PB, EB)
 }
+
+//!-
