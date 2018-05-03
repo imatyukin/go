@@ -18,8 +18,8 @@ func init() {
 }
 
 func main() {
-	hash1 := sha256.Sum256([]byte("hello world"))
-	hash2 := sha256.Sum256([]byte("hello worlD"))
+	hash1 := sha256.Sum256([]byte("x"))
+	hash2 := sha256.Sum256([]byte("X"))
 	printHash(hash1)
 	printHash(hash2)
 	fmt.Println(diffBits(hash1, hash2))
